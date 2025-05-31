@@ -2,3 +2,82 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.vehicle-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.vehicle-name {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.vehicle-category {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.vehicle-info {
+  margin-bottom: 12px;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.info-item strong {
+  color: #555;
+}
+
+.vehicle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+.tag-imani {
+  background-color: #28a745;
+}
+
+.tag-hsw {
+  background-color: #fd7e14;
+}
+
+.tag-armed {
+  background-color: #dc3545;
+}
+
+.tag-arena {
+  background-color: #6f42c1;
+}

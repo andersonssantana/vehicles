@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFind, useSubscribe } from 'meteor/react-meteor-data';
 import { VeiculosCollection } from '../api/veiculos';
+import { VehicleCard } from './VehicleCard';
 
 export const Info = () => {
   const isLoading = useSubscribe('veiculos');
@@ -13,13 +14,13 @@ export const Info = () => {
   return (
     <div>
       <h2>Vehicles</h2>
-      <ul>{veiculos.map(
-        veiculo => <li key={veiculo._id}>
-          <div>{veiculo.veiculo}</div>
-        </li>
-      )}</ul>
-      <div>
-        
+      <div className="vehicles-list">
+        {veiculos.map(veiculo => (
+          <VehicleCard
+            key={veiculo._id}
+            veiculo={veiculo}
+          />
+        ))}
       </div>
     </div>
   );
