@@ -1,6 +1,12 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 
 export const VehicleCard = ({ veiculo }) => {
+
+  const handleRemoveVehicle = (veiculo) => {
+    Meteor.call('veiculos.remove', veiculo)
+  }
+
   return (
     <div className="vehicle-card">
       <div className="vehicle-header">
@@ -35,6 +41,9 @@ export const VehicleCard = ({ veiculo }) => {
           <span className="tag tag-arena">Possui upgrades da Arena</span>
         )}
       </div>
+      <button type='button' onClick={ () => handleRemoveVehicle(veiculo) }>
+        Delete
+      </button>
     </div>
   );
 };

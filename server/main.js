@@ -26,3 +26,9 @@ Meteor.startup(async () => {
     return VeiculosCollection.find();
   });
 });
+
+Meteor.methods({
+  'veiculos.remove': function({ _id }) {
+    return VeiculosCollection.removeAsync({ _id })
+  }
+})
