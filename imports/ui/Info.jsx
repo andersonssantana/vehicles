@@ -1,10 +1,10 @@
 import React from 'react';
 import { useFind, useSubscribe } from 'meteor/react-meteor-data';
-import { LinksCollection } from '../api/links';
+import { VeiculosCollection } from '../api/veiculos';
 
 export const Info = () => {
-  const isLoading = useSubscribe('links');
-  const links = useFind(() => LinksCollection.find());
+  const isLoading = useSubscribe('veiculos');
+  const veiculos = useFind(() => VeiculosCollection.find());
 
   if(isLoading()) {
     return <div>Loading...</div>;
@@ -12,12 +12,15 @@ export const Info = () => {
 
   return (
     <div>
-      <h2>Learn Meteor!</h2>
-      <ul>{links.map(
-        link => <li key={link._id}>
-          <a href={link.url} target="_blank">{link.title}</a>
+      <h2>Vehicles</h2>
+      <ul>{veiculos.map(
+        veiculo => <li key={veiculo._id}>
+          <div>{veiculo.veiculo}</div>
         </li>
       )}</ul>
+      <div>
+        
+      </div>
     </div>
   );
 };
