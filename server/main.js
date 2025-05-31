@@ -29,27 +29,27 @@ async function insertVehicle({
 Meteor.startup(async () => {
   if (await VeiculosCollection.find().countAsync() === 0) {
     await insertVehicle({
-      veiculo: "Blista",
-      nome_abreviado_ptbr: "Blista",
-      categoria: "Compactos",
-      local: "Los Santos",
-      imani_tech: false,
-      hsw: false,
-      arena: false,
-      armado: false,
-      caracteristicas_especiais: "Nenhuma"
+        veiculo: "Bravado Buffalo EVX",
+        nome_abreviado_ptbr: "Buffalo EVX",
+        categoria: "Muscle",
+        local: "Agency: Hawick",
+        imani_tech: true,
+        hsw: true,
+        arena: false,
+        armado: false,
+        características_especiais: ""
     });
 
     await insertVehicle({
-      veiculo: "Blista Compact",
-      nome_abreviado_ptbr: "Blista Compact",
-      categoria: "Compactos",
-      local: "Los Santos",
-      imani_tech: false,
-      hsw: true,
-      arena: false,
-      armado: false,
-      caracteristicas_especiais: "Nenhuma"
+        veiculo: "Bravado Buffalo STX",
+        nome_abreviado_ptbr: "Buffalo STX",
+        categoria: "Muscle",
+        local: "Agency: Hawick",
+        imani_tech: true,
+        hsw: false,
+        arena: false,
+        armado: false,
+        características_especiais: "Metralhadoras"
     });
   }
 
