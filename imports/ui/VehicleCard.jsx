@@ -4,8 +4,10 @@ import { Meteor } from 'meteor/meteor';
 export const VehicleCard = ({ veiculo }) => {
 
   const handleRemoveVehicle = (veiculo) => {
-    Meteor.call('veiculos.remove', veiculo)
-  }
+    if (window.confirm('Tem certeza que deseja remover este veículo?')) {
+      Meteor.call('veiculos.remove', veiculo);
+    }
+  };
 
   return (
     <div className="vehicle-card">
@@ -41,8 +43,14 @@ export const VehicleCard = ({ veiculo }) => {
           <span className="tag tag-arena">Possui upgrades da Arena</span>
         )}
       </div>
-      <button type='button' onClick={ () => handleRemoveVehicle(veiculo) }>
-        Delete
+      
+      <button 
+        type="button" 
+        className="vehicle-card__delete-btn"
+        onClick={() => handleRemoveVehicle(veiculo)}
+        aria-label={`Remover veículo ${veiculo.veiculo}`}
+      >
+        🗑️ Remover Veículo
       </button>
     </div>
   );
