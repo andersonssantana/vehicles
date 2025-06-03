@@ -178,19 +178,20 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .tag {
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: 1px 9px;
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--color-white);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: var(--transition);
+  border: 1px solid #ffffff;
 }
 
 .tag:hover {
@@ -199,19 +200,19 @@ h2 {
 }
 
 .tag-imani {
-  background: linear-gradient(135deg, var(--color-success), #20c997);
+  background: linear-gradient(135deg, #2c7a4b, #4acfa9);
 }
 
 .tag-hsw {
-  background: linear-gradient(135deg, var(--color-warning), #ffb347);
+  background: linear-gradient(135deg, #d2691e, #ff9f43);
 }
 
 .tag-armed {
-  background: linear-gradient(135deg, var(--color-danger), #ff6b6b);
+  background: linear-gradient(135deg, #8b1a1a, #b22222);
 }
 
 .tag-arena {
-  background: linear-gradient(135deg, #6f42c1, #8a63d2);
+  background: linear-gradient(135deg, #483d8b, #7b68ee);
 }
 
 /* Botão de deletar - Estilização completa */
@@ -219,7 +220,7 @@ h2 {
   margin-top: auto;
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-md);
-  background: linear-gradient(135deg, var(--color-danger), #ff6b6b);
+  background: linear-gradient(135deg, #343a40, #6c757d);
   color: var(--color-white);
   border: none;
   border-radius: var(--border-radius-sm);
