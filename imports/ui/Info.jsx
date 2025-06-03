@@ -7,9 +7,17 @@ import { EditVehicleForm } from './EditVehicleForm';
 
 export const Info = () => {
   const isLoading = useSubscribe('veiculos');
-  const veiculos = useFind(() => VeiculosCollection.find({}, { sort: { veiculo: 1 } }));
+  
+  const [sortKey, setSortKey] = useState('veiculo');
+  const [sortOrder, setSortOrder] = useState(1);
+
   const [isAdding, setIsAdding] = useState(false);
   const [editingVehicle, setEditingVehicle] = useState(null);
+
+  const veiculos = useFind(
+    () => VeiculosCollection.find({}, { sort: { [sortKey]: sortOrder } }),
+    [sortKey, sortOrder]
+  );
 
   if (isLoading()) {
     return <div>Loading...</div>;
@@ -25,10 +33,21 @@ export const Info = () => {
 
   return (
     <div>
-      <h2>Vehicles</h2>
+      <div className="sort-options">
+        <label>Ordenar por: </label>
+        <select className="sort-select" value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
+          <option value="veiculo">Nome do Veículo</option>
+          <option value="local">Local de Armazenamento</option>
+        </select>
+        <button className="sort-toggle-btn" onClick={() => setSortOrder((prev) => prev * -1)}>
+          {sortOrder === 1 ? 'Ascendente ↑' : 'Descendente ↓'}
+        </button>
+      </div>
+      
       <button className="add-vehicle-btn" onClick={() => setIsAdding(true)}>
         Adicionar Veículo
       </button>
+      
       <div className="vehicles-list">
         {veiculos.map((veiculo) => (
           <VehicleCard
