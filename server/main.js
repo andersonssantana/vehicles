@@ -37,4 +37,8 @@ Meteor.methods({
   'veiculos.remove': function ({ _id }) {
     return VeiculosCollection.removeAsync({ _id });
   },
+  'veiculos.update': function (vehicleData) {
+    const { _id, ...updateData } = vehicleData;
+    return VeiculosCollection.updateAsync(_id, { $set: updateData });
+  },
 });

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-export const VehicleCard = ({ veiculo }) => {
-
+export const VehicleCard = ({ veiculo, onEdit }) => {
   const handleRemoveVehicle = (veiculo) => {
     if (window.confirm('Tem certeza que deseja remover este veículo?')) {
       Meteor.call('veiculos.remove', veiculo);
@@ -43,15 +42,26 @@ export const VehicleCard = ({ veiculo }) => {
           <span className="tag tag-arena">Possui upgrades da Arena</span>
         )}
       </div>
-      
-      <button 
-        type="button" 
-        className="vehicle-card__delete-btn"
-        onClick={() => handleRemoveVehicle(veiculo)}
-        aria-label={`Remover veículo ${veiculo.veiculo}`}
-      >
-        🗑️ Remover Veículo
-      </button>
+
+      <div className="vehicle-card__actions">
+        <button 
+          type="button" 
+          className="vehicle-card__edit-btn"
+          onClick={() => onEdit(veiculo)}
+          aria-label={`Editar veículo ${veiculo.veiculo}`}
+        >
+          ✏️ Editar
+        </button>
+        
+        <button 
+          type="button" 
+          className="vehicle-card__delete-btn"
+          onClick={() => handleRemoveVehicle(veiculo)}
+          aria-label={`Remover veículo ${veiculo.veiculo}`}
+        >
+          🗑️ Remover Veículo
+        </button>
+      </div>
     </div>
   );
 };
