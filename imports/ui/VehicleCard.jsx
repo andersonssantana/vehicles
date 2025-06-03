@@ -22,7 +22,7 @@ export const VehicleCard = ({ veiculo }) => {
         </div>
         
         <div className="info-item">
-          <strong>Características principais:</strong> {veiculo.caracteristicas_principais}
+          <strong>Características especiais:</strong> {veiculo.caracteristicas_especiais == "" ? "Nenhuma" : veiculo.caracteristicas_especiais}
         </div>
       </div>
 
