@@ -1,6 +1,7 @@
 # Vehicles - Sistema de Gerenciamento de Veículos GTA
 
 ![Meteor](https://img.shields.io/badge/Meteor-DE4F4F?style=for-the-badge&logo=meteor&logoColor=white)
+![Galaxy Deploy](https://img.shields.io/badge/Galaxy-Deployed-success?style=for-the-badge&logo=meteor&logoColor=white)
 ![React](https://img.shields.io/badge/React_18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Real Time](https://img.shields.io/badge/Real_Time-FF6B6B?style=for-the-badge&logo=socketdotio&logoColor=white)
@@ -8,6 +9,12 @@
 ## 📋 Visão Geral
 
 Este projeto é um sistema de gerenciamento de veículos inspirado no universo GTA (Grand Theft Auto), desenvolvido com Meteor.js e React. A aplicação permite visualizar, gerenciar e remover veículos de uma coleção, apresentando informações detalhadas sobre cada veículo, incluindo características especiais, upgrades e armamentos.
+
+## 🌐 Demo ao Vivo
+
+**🚀 Aplicação em Produção**: [https://gtavehiclelist.meteorapp.com](https://gtavehiclelist.meteorapp.com)
+
+A aplicação está **online e funcional** no Galaxy Cloud Service da Meteor, demonstrando a implementação completa do sistema em ambiente de produção.
 
 ### 🎯 Objetivo do Projeto
 
