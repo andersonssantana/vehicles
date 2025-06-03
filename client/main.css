@@ -400,3 +400,95 @@ h2 {
     border: 2px solid var(--color-border);
   }
 }
+
+/* Botão Adicionar Veículo */
+.add-vehicle-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.add-vehicle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.add-vehicle-btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Estilos para o formulário de adição de veículo */
+.add-vehicle-form {
+  background-color: var(--color-white);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  max-width: 500px;
+  margin: var(--spacing-md) auto;
+}
+
+.add-vehicle-form h2 {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.add-vehicle-form div {
+  margin-bottom: var(--spacing-md);
+}
+
+.add-vehicle-form label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.add-vehicle-form input[type="text"],
+.add-vehicle-form textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+}
+
+.add-vehicle-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.add-vehicle-form input[type="checkbox"] {
+  margin-right: var(--spacing-xs);
+}
+
+.add-vehicle-form button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: var(--spacing-md);
+}
+
+.add-vehicle-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.add-vehicle-form button:last-child {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+}

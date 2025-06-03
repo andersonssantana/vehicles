@@ -11,7 +11,7 @@ async function insertVehicle(vehicleData) {
 Meteor.startup(async () => {
   if (await VeiculosCollection.find().countAsync() === 0) {
     Assets.getTextAsync('veiculos_gta.json', async (error, data) => {
-    if (error) {
+      if (error) {
         console.error("Error loading veiculos_gta.json:", error);
         return;
       }
@@ -28,7 +28,13 @@ Meteor.startup(async () => {
 });
 
 Meteor.methods({
-  'veiculos.remove': function({ _id }) {
-    return VeiculosCollection.removeAsync({ _id })
-  }
-})
+  'veiculos.insert': function (vehicleData) {
+    return VeiculosCollection.insertAsync({
+      ...vehicleData,
+      createdAt: new Date(),
+    });
+  },
+  'veiculos.remove': function ({ _id }) {
+    return VeiculosCollection.removeAsync({ _id });
+  },
+});
