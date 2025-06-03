@@ -5,7 +5,7 @@ import { VehicleCard } from './VehicleCard';
 
 export const Info = () => {
   const isLoading = useSubscribe('veiculos');
-  const veiculos = useFind(() => VeiculosCollection.find());
+  const veiculos = useFind(() => VeiculosCollection.find({}, {sort: {veiculo: 1}}));
 
   if(isLoading()) {
     return <div>Loading...</div>;
