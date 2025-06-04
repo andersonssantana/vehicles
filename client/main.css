@@ -1,30 +1,30 @@
 /* =============================================================================
-   VARIÁVEIS CSS E RESET
+   VARIÁVEIS CSS E RESET (TEMA ESCURO)
 ============================================================================= */
 
 :root {
+  /* Tema Escuro - Cores Base */
+  --dark-bg-primary: #1a202c;
+  --dark-bg-secondary: #2d3748;
+  --dark-bg-tertiary: #4a5568;
+  --dark-text-primary: #e2e8f0;
+  --dark-text-secondary: #a0aec0;
+  --dark-border-primary: #4a5568;
+  --dark-border-secondary: #2d3748;
+
+  /* Cores de Acento */
+  --accent-blue: #4299e1;
+  --accent-red: #e53e3e;
+  --accent-yellow: #ecc94b;
+  --accent-green: #48bb78;
+  --accent-purple: #9f7aea;
+  --accent-orange: #ed8936;
+  --accent-cyan: #38b2ac;
+
   /* Border radius */
-  --border-radius: 8px;
-  --border-radius-lg: 12px;
+  --border-radius: 6px;
+  --border-radius-lg: 10px;
   --border-radius-sm: 4px;
-
-  /* Cores de fundo e texto */
-  --color-background: #f5f5f5;
-  --color-border: #dee2e6;
-  --color-border-light: #e9ecef;
-  --color-text: #333333;
-  --color-text-muted: #6c757d;
-  --color-white: #ffffff;
-
-  /* Cores principais */
-  --color-danger: #dc3545;
-  --color-dark: #343a40;
-  --color-info: #17a2b8;
-  --color-light: #f8f9fa;
-  --color-primary: #007bff;
-  --color-secondary: #6c757d;
-  --color-success: #28a745;
-  --color-warning: #fd7e14;
 
   /* Espaçamentos */
   --spacing-lg: 24px;
@@ -34,352 +34,409 @@
   --spacing-xs: 4px;
 
   /* Sombras */
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
 
   /* Tipografia */
   --font-family-primary: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-  --font-size-2xl: 1.5rem;
-  --font-size-base: 1.05rem;
+  --font-size-2xl: 2.5rem;
+  --font-size-base: 0.95rem;
   --font-size-lg: 1.125rem;
-  --font-size-sm: 0.85rem;
+  --font-size-sm: 0.8rem;
   --font-size-xl: 1.25rem;
 
   /* Transições */
-  --transition: all 0.3s ease;
+  --transition: all 0.2s ease-in-out;
 }
 
 /* Reset básico */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 /* =============================================================================
-   ESTILOS BASE
+   ESTILOS BASE (TEMA ESCURO)
 ============================================================================= */
 
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--dark-bg-primary);
+  color: var(--dark-text-primary);
   font-family: var(--font-family-primary);
-  line-height: 1.6;
+  font-size: var(--font-size-2xl);
+  line-height: 1.5;
   padding: var(--spacing-md);
 }
 
+h1, h2 {
+  color: var(--dark-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
 h1 {
-  color: var(--color-dark);
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  margin-bottom: var(--spacing-lg);
   text-align: center;
 }
 
 h2 {
-  color: var(--color-dark);
   font-size: var(--font-size-xl);
   font-weight: 600;
   margin-bottom: var(--spacing-md);
 }
 
 /* =============================================================================
-   COMPONENTES DE ESTADO
+   ESTILOS GERAIS PARA INPUTS E BOTÕES
 ============================================================================= */
 
-.error {
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: var(--border-radius);
-  color: #721c24;
-  margin: var(--spacing-lg) 0;
-  padding: var(--spacing-xl);
-  text-align: center;
-}
-
-.loading {
-  align-items: center;
-  background-color: var(--color-light);
-  border-radius: var(--border-radius);
-  color: var(--color-text-muted);
-  display: flex;
-  font-size: var(--font-size-lg);
-  justify-content: center;
-  margin: var(--spacing-lg) 0;
-  padding: var(--spacing-xl);
-  text-align: center;
-}
-
-/* =============================================================================
-   LISTA DE VEÍCULOS
-============================================================================= */
-
-.vehicles-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-/* =============================================================================
-   CARD DO VEÍCULO
-============================================================================= */
-
-.vehicle-card {
-  animation: fadeIn 0.5s ease-forward;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 200px;
-  padding: var(--spacing-md);
-  position: relative;
-  transition: var(--transition);
-}
-
-.vehicle-card::before {
-  background: linear-gradient(to bottom, var(--color-primary), var(--color-info));
-  border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
-  content: '';
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 4px;
-}
-
-.vehicle-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.vehicle-content {
-  flex-grow: 1;
-}
-
-.vehicle-header {
-  border-bottom: 1px solid var(--color-border-light);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-sm);
-}
-
-.vehicle-name {
-  color: var(--color-dark);
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.vehicle-category {
-  align-self: flex-start;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
+input[type="text"],
+input[type="search"],
+select,
+textarea {
+  background-color: var(--dark-bg-secondary);
+  border: 1px solid var(--dark-border-primary);
   border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-sm);
-  color: var(--color-white);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  text-transform: uppercase;
-}
-
-.vehicle-info {
-  margin-bottom: var(--spacing-md);
-}
-
-.info-item {
+  color: var(--dark-text-primary);
   font-size: var(--font-size-base);
-  line-height: 1.5;
-  margin-bottom: var(--spacing-sm);
-}
-
-.info-item:last-child {
-  margin-bottom: 0;
-}
-
-.info-item strong {
-  color: var(--color-dark);
-  display: block;
-  font-weight: 600;
-  margin-bottom: var(--spacing-xs);
-}
-
-.vehicle-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-}
-
-.tag {
-  border: 1px solid var(--color-white);
-  border-radius: var(--border-radius-sm);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: var(--color-white);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 1px 9px;
-  text-transform: uppercase;
-  transition: var(--transition);
-}
-
-.tag:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-}
-
-.tag-armed {
-  background: linear-gradient(135deg, #8b1a1a, #b22222);
-}
-
-.tag-arena {
-  background: linear-gradient(135deg, #483d8b, #7b68ee);
-}
-
-.tag-hsw {
-  background: linear-gradient(135deg, #d2691e, #ff9f43);
-}
-
-.tag-imani {
-  background: linear-gradient(135deg, #2c7a4b, #4acfa9);
-}
-
-/* =============================================================================
-   AÇÕES DO VEÍCULO
-============================================================================= */
-
-.vehicle-card__actions {
-  display: flex;
-  gap: var(--spacing-sm);
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: var(--spacing-md);
-}
-
-.vehicle-card__delete-btn,
-.vehicle-card__edit-btn {
-  border: none;
-  border-radius: var(--border-radius-sm);
-  color: var(--color-white);
-  cursor: pointer;
-  flex: 1;
-  font-size: 0.9rem;
-  font-weight: 600;
-  overflow: hidden;
-  padding: 10px 0;
-  position: relative;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.vehicle-card__delete-btn::before,
-.vehicle-card__edit-btn::before {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  content: '';
-  height: 100%;
-  left: -100%;
-  position: absolute;
-  top: 0;
-  transition: left 0.5s;
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: border-color var(--transition), box-shadow var(--transition);
   width: 100%;
 }
 
-.vehicle-card__delete-btn:hover,
-.vehicle-card__edit-btn:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+input[type="text"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+  outline: none;
 }
 
-.vehicle-card__delete-btn:hover::before,
-.vehicle-card__edit-btn:hover::before {
-  left: 100%;
-}
-
-.vehicle-card__delete-btn:active,
-.vehicle-card__edit-btn:active {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(0);
-}
-
-.vehicle-card__edit-btn {
-  background: linear-gradient(135deg, #f1c40f, #e67e22);
-}
-
-.vehicle-card__edit-btn:focus {
-  outline: 2px solid var(--color-warning);
-  outline-offset: 2px;
-}
-
-.vehicle-card__delete-btn {
-  background: linear-gradient(135deg, #c82333, var(--color-danger));
-}
-
-.vehicle-card__delete-btn:hover {
-  background: linear-gradient(135deg, #c82333, var(--color-danger));
-}
-
-.vehicle-card__delete-btn:focus {
-  outline: 2px solid var(--color-danger);
-  outline-offset: 2px;
-}
-
-/* =============================================================================
-   BOTÃO ADICIONAR VEÍCULO
-============================================================================= */
-
-.add-vehicle-btn {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  border: none;
+button {
+  background-color: var(--dark-bg-tertiary);
+  border: 1px solid transparent;
   border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-sm);
-  color: var(--color-white);
+  color: var(--dark-text-primary);
   cursor: pointer;
   font-size: var(--font-size-base);
   font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: var(--spacing-md);
   padding: var(--spacing-sm) var(--spacing-md);
-  text-transform: uppercase;
-  transition: var(--transition);
+  transition: background-color var(--transition), transform var(--transition);
 }
 
-.add-vehicle-btn:hover {
+button:hover {
+  background-color: var(--dark-border-primary);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent-blue);
+  cursor: pointer;
+  height: 16px;
+  margin-right: var(--spacing-sm);
+  vertical-align: middle;
+  width: 16px;
+}
+
+/* =============================================================================
+   COMPONENTES COMUNS
+============================================================================= */
+
+.table-container,
+.add-vehicle-form,
+.edit-vehicle-form {
+  background-color: var(--dark-bg-secondary);
+  border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  overflow: hidden;
+  padding: var(--spacing-md);
 }
 
-.add-vehicle-btn:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.add-vehicle-form,
+.edit-vehicle-form {
+  box-shadow: var(--shadow-lg);
+  margin: var(--spacing-xl) auto;
+  max-width: 600px;
+  padding: var(--spacing-lg);
+}
+
+.table-controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.search-input {
+  background-color: var(--dark-bg-primary);
+  border: 1px solid var(--dark-border-primary);
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+.control-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.control-btn {
+  font-size: var(--font-size-xl);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.control-btn.add-btn {
+  background-color: var(--accent-blue);
+  color: white;
+}
+
+.control-btn.add-btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* =============================================================================
+   ESTILOS DA TABELA
+============================================================================= */
+
+.vehicles-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.vehicles-table th,
+.vehicles-table td {
+  border-bottom: 1px solid var(--dark-border-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.vehicles-table th {
+  color: var(--dark-text-secondary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vehicles-table th:nth-child(3),
+.vehicles-table td:nth-child(3),
+.vehicles-table th:nth-child(4),
+.vehicles-table td:nth-child(4),
+.vehicles-table th:nth-child(5),
+.vehicles-table td:nth-child(5) {
+  display: none;
+}
+
+.vehicles-table th.sortable-header {
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.vehicles-table th.sortable-header:hover {
+  color: var(--dark-text-primary);
+}
+
+.vehicles-table tbody tr {
+  transition: background-color var(--transition);
+}
+
+.vehicles-table tbody tr:hover {
+  background-color: var(--dark-bg-tertiary);
+}
+
+.vehicles-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Alinhamento específico para colunas */
+.vehicles-table th:first-child,
+.vehicles-table td:first-child {
+  text-align: center;
+  width: 40px;
+}
+
+.vehicles-table th:last-child,
+.vehicles-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* =============================================================================
+   ELEMENTOS DE INTERFACE
+============================================================================= */
+
+.category-badge,
+.tag {
+  border-radius: var(--border-radius-sm);
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: 2px 8px;
+  text-transform: capitalize;
+}
+
+.category-badge {
+  background-color: var(--accent-blue);
+  color: white;
+}
+
+.tags-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tag {
+  color: var(--dark-text-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0 2px;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Cores específicas para tags */
+.tag-imani {
+  background-color: var(--accent-green);
+  color: var(--dark-bg-primary);
+}
+
+.tag-hsw {
+  background-color: var(--accent-orange);
+  color: var(--dark-bg-primary);
+}
+
+.tag-armed {
+  background-color: var(--accent-red);
+}
+
+.tag-arena {
+  background-color: var(--accent-purple);
+}
+
+.actions-cell {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+.action-btn {
+  background: none;
+  border: 1px solid var(--dark-border-primary);
+  border-radius: var(--border-radius-sm);
+  color: var(--dark-text-secondary);
+  cursor: pointer;
+  font-size: var(--font-size-2xl);
+  margin: 0 2px;
+  padding: 4px 8px;
+}
+
+.action-btn:hover {
+  background-color: var(--dark-bg-tertiary);
+  border-color: var(--dark-text-secondary);
+  color: var(--dark-text-primary);
+  transform: none;
+}
+
+.action-btn.edit-btn {
+  color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+}
+
+.action-btn.edit-btn:hover {
+  background-color: rgba(236, 201, 75, 0.1);
+  color: #f6e05e;
+  border-color: #f6e05e;
+}
+
+.action-btn.delete-btn {
+  color: var(--accent-red);
+  border-color: var(--accent-red);
+}
+
+.action-btn.delete-btn:hover {
+  background-color: rgba(229, 62, 62, 0.1);
+  color: #fc8181;
+  border-color: #fc8181;
+}
+
+/* =============================================================================
+   PAGINAÇÃO
+============================================================================= */
+
+.pagination-controls {
+  align-items: center;
+  border-top: 1px solid var(--dark-border-primary);
+  color: var(--dark-text-secondary);
+  display: flex;
+  font-size: var(--font-size-sm);
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+}
+
+.pagination-controls div {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.pagination-controls button {
+  background: none;
+  border: 1px solid var(--dark-border-primary);
+  border-radius: var(--border-radius-sm);
+  color: var(--dark-text-secondary);
+  font-size: var(--font-size-sm);
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--dark-text-primary);
+  border-color: var(--dark-text-secondary);
+  transform: none;
+}
+
+.pagination-controls button.active {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: white;
+  font-weight: 700;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.4;
 }
 
 /* =============================================================================
    FORMULÁRIOS
 ============================================================================= */
 
-.add-vehicle-form,
-.edit-vehicle-form {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  margin: var(--spacing-md) auto;
-  max-width: 500px;
-  padding: var(--spacing-md);
-}
-
 .add-vehicle-form h2,
 .edit-vehicle-form h2 {
-  color: var(--color-dark);
-  margin-bottom: var(--spacing-lg);
   text-align: center;
 }
 
@@ -390,23 +447,11 @@ h2 {
 
 .add-vehicle-form label,
 .edit-vehicle-form label {
-  color: var(--color-dark);
+  color: var(--dark-text-secondary);
   display: block;
   font-weight: 600;
   margin-bottom: var(--spacing-xs);
-}
-
-.add-vehicle-form input[type="text"],
-.add-vehicle-form select,
-.add-vehicle-form textarea,
-.edit-vehicle-form input[type="text"],
-.edit-vehicle-form select,
-.edit-vehicle-form textarea {
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-base);
-  padding: var(--spacing-sm);
-  width: 100%;
+  font-size: var(--font-size-sm);
 }
 
 .add-vehicle-form textarea,
@@ -415,114 +460,61 @@ h2 {
   resize: vertical;
 }
 
-.add-vehicle-form input[type="checkbox"],
-.edit-vehicle-form input[type="checkbox"] {
-  margin-right: var(--spacing-xs);
-}
-
 .add-vehicle-form button,
 .edit-vehicle-form button {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  border: none;
-  border-radius: var(--border-radius-sm);
-  color: var(--color-white);
-  cursor: pointer;
-  font-weight: 600;
-  margin-right: var(--spacing-md);
-  padding: var(--spacing-sm) var(--spacing-md);
-  transition: var(--transition);
+  min-width: 100px;
 }
 
-.add-vehicle-form button:hover,
-.edit-vehicle-form button:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+/* Botões de formulário */
+.add-vehicle-form button[type="submit"],
+.edit-vehicle-form button[type="submit"],
+.add-vehicle-form button:first-of-type,
+.edit-vehicle-form button:first-of-type {
+  background-color: var(--accent-blue);
+  color: white;
+  margin-right: var(--spacing-sm);
 }
 
-.add-vehicle-form button:last-child,
-.edit-vehicle-form button:last-child {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+.add-vehicle-form button[type="submit"]:hover,
+.edit-vehicle-form button[type="submit"]:hover,
+.add-vehicle-form button:first-of-type:hover,
+.edit-vehicle-form button:first-of-type:hover {
+  background-color: #2b6cb0;
+}
+
+.add-vehicle-form button[type="button"]:last-of-type,
+.edit-vehicle-form button[type="button"]:last-of-type {
+  background-color: transparent;
+  border: 1px solid var(--dark-border-primary);
+  color: var(--dark-text-secondary);
+}
+
+.add-vehicle-form button[type="button"]:last-of-type:hover,
+.edit-vehicle-form button[type="button"]:last-of-type:hover {
+  background-color: var(--dark-bg-tertiary);
+  border-color: var(--dark-text-secondary);
+  color: var(--dark-text-primary);
 }
 
 /* =============================================================================
-   OPÇÕES DE ORDENAÇÃO
+   ESTADOS E UTILITÁRIOS
 ============================================================================= */
 
-.sort-options {
+.loading {
   align-items: center;
+  background-color: var(--dark-bg-secondary);
+  border-radius: var(--border-radius);
+  color: var(--dark-text-secondary);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  margin-bottom: var(--spacing-md);
-  gap: var(--spacing-sm);
-}
-
-.sort-options label {
-  color: var(--color-dark);
-  font-weight: 600;
-}
-
-.sort-select {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-sm);
-  color: var(--color-text);
-  cursor: pointer;
-  font-size: var(--font-size-base);
-  padding: var(--spacing-sm) var(--spacing-md);
-  transition: var(--transition);
-}
-
-.sort-select:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.sort-select:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.sort-toggle-btn {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  border: none;
-  border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-sm);
-  color: var(--color-white);
-  cursor: pointer;
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  padding: var(--spacing-sm) var(--spacing-md);
-  transition: var(--transition);
-}
-
-.sort-toggle-btn:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.sort-toggle-btn:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  font-size: var(--font-size-lg);
+  justify-content: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-xl);
+  text-align: center;
 }
 
 /* =============================================================================
-   ANIMAÇÕES
-============================================================================= */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =============================================================================
-   RESPONSIVIDADE (Mobile-First: Estilos base são para mobile)
+   RESPONSIVIDADE
 ============================================================================= */
 
 @media (min-width: 768px) {
@@ -530,93 +522,129 @@ h2 {
     padding: var(--spacing-lg);
   }
 
-  .vehicles-list {
-    display: grid;
+  .table-container {
+    padding: var(--spacing-lg);
   }
 
-  .vehicle-header {
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .vehicle-name {
-    font-size: var(--font-size-xl);
-  }
-
-  .info-item strong {
-    display: inline;
-    margin-bottom: 0;
-    margin-right: var(--spacing-xs);
-  }
-
-  .sort-options {
+  .table-controls {
     flex-wrap: nowrap;
+  }
+
+  .vehicles-table th,
+  .vehicles-table td {
+    padding: var(--spacing-md);
   }
 }
 
 @media (min-width: 1024px) {
   body {
+    font-size: var(--font-size-base);
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 1600px;
     padding: var(--spacing-xl);
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: var(--spacing-xl);
   }
 
-  .vehicles-list {
-    gap: var(--spacing-xl);
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  .action-btn {
+    font-size: var(--font-size-sm);
   }
 
-  .vehicle-card {
-    padding: var(--spacing-lg);
+  .control-btn {
+  font-size: var(--font-size-sm);
+}
+
+  .vehicles-table th {
+    font-size: var(--font-size-base);
   }
 
-  .vehicle-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+  .vehicles-table th:nth-child(3),
+  .vehicles-table td:nth-child(3),
+  .vehicles-table th:nth-child(4),
+  .vehicles-table td:nth-child(4),
+  .vehicles-table th:nth-child(5),
+  .vehicles-table td:nth-child(5) {
+    display: table-cell;
   }
 }
 
-@media (min-width: 1440px) {
-  .vehicles-list {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 600px) {
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .vehicles-table th,
+  .vehicles-table td {
+    padding: var(--spacing-sm);
+    white-space: nowrap;
+  }
+
+  .actions-cell {
+    gap: var(--spacing-xs);
+  }
+
+  .action-btn {
+    padding: 3px 6px;
+  }
+
+  .table-controls {
+     flex-direction: column;
+     align-items: stretch;
+  }
+
+  .search-input {
+    max-width: none;
+  }
+
+  .control-buttons {
+    justify-content: space-between;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: center;
   }
 }
 
 /* =============================================================================
-   ACESSIBILIDADE E CONFIGURAÇÕES ESPECIAIS
+   ACESSIBILIDADE
 ============================================================================= */
-
-.vehicle-card:focus-visible,
-.vehicle-card__delete-btn:focus-visible,
-.vehicle-card__edit-btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
 
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation: none !important;
     transition-duration: 0.01ms !important;
   }
 }
 
 @media print {
-  .add-vehicle-btn,
-  .vehicle-card__delete-btn,
-  .vehicle-card__edit-btn {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .table-container, .add-vehicle-form, .edit-vehicle-form {
+    background-color: white;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .vehicles-table th, .vehicles-table td {
+    border-color: #ccc;
+    color: black;
+  }
+
+  .control-btn, .action-btn, .pagination-controls, .search-input {
     display: none;
   }
 
-  .vehicle-card {
-    border: 2px solid var(--color-border);
-    box-shadow: none;
-    break-inside: avoid;
+  .tag {
+    border: 1px solid #ccc;
+    color: black !important;
+    background-color: white !important;
   }
 }

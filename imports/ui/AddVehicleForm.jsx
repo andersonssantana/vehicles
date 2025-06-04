@@ -29,7 +29,7 @@ export const AddVehicleForm = ({ onSave }) => {
       if (error) {
         console.error('Erro ao adicionar veículo:', error);
       } else {
-        onSave(); // Volta para a visualização dos cards
+        onSave();
       }
     });
   };
