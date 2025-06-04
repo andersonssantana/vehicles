@@ -147,8 +147,9 @@ input[type="checkbox"] {
   accent-color: var(--accent-blue);
   cursor: pointer;
   height: 16px;
-  width: 16px;
+  margin-right: var(--spacing-sm);
   vertical-align: middle;
+  width: 16px;
 }
 
 /* =============================================================================
