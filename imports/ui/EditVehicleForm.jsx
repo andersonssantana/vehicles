@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
+import possibleLocations from '../helpers/possibleLocations';
+import categories from '../helpers/categories';
 
 export const EditVehicleForm = ({ veiculo, onSave }) => {
   const [formData, setFormData] = useState({ ...veiculo });
@@ -38,25 +40,37 @@ export const EditVehicleForm = ({ veiculo, onSave }) => {
       </div>
       <div>
         <label htmlFor="categoria">Categoria:</label>
-        <input
-          type="text"
+        <select
           id="categoria"
           name="categoria"
           value={formData.categoria}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Selecione uma categoria</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
       </div>
       <div>
         <label htmlFor="local">Local de Armazenamento:</label>
-        <input
-          type="text"
+        <select
           id="local"
           name="local"
           value={formData.local}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Selecione um local</option>
+          {possibleLocations.map((location) => (
+            <option key={location} value={location}>
+              {location}
+            </option>
+          ))}
+        </select>
       </div>
       <div>
         <label htmlFor="caracteristicasEspeciais">Características Especiais:</label>

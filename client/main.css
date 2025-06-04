@@ -405,8 +405,10 @@ h2 {
 
 .add-vehicle-form input[type="text"],
 .add-vehicle-form textarea,
+.add-vehicle-form select,
 .edit-vehicle-form input[type="text"],
-.edit-vehicle-form textarea {
+.edit-vehicle-form textarea,
+.edit-vehicle-form select {
   width: 100%;
   padding: var(--spacing-sm);
   border: 1px solid var(--color-border);
