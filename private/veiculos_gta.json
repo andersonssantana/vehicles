@@ -19,7 +19,7 @@
         "hsw": false,
         "arena": false,
         "armado": true,
-        "caracteristicas_especiais": "Metralhadoras\n"
+        "caracteristicas_especiais": "Metralhadoras"
     },
     {
         "veiculo": "Grotti Itali GTO Stinger TT",
@@ -151,7 +151,7 @@
         "hsw": false,
         "arena": true,
         "armado": true,
-        "caracteristicas_especiais": "Upgrades de Arena\n"
+        "caracteristicas_especiais": "Upgrades de Arena"
     },
     {
         "veiculo": "Vapid Future Shock Dominator",
@@ -701,7 +701,7 @@
         "hsw": false,
         "arena": false,
         "armado": false,
-        "caracteristicas_especiais": "Upgrade de desempenho\n"
+        "caracteristicas_especiais": "Upgrade de desempenho"
     },
     {
         "veiculo": "Declasse Hotring Sabre",
