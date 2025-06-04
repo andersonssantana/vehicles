@@ -4,25 +4,25 @@
 
 :root {
   /* Tema Escuro - Cores Base */
-  --dark-bg-primary: #1a202c; /* Fundo principal escuro */
-  --dark-bg-secondary: #2d3748; /* Fundo secundário (cards, tabelas) */
-  --dark-bg-tertiary: #4a5568; /* Fundo para elementos interativos (hover) */
-  --dark-text-primary: #e2e8f0; /* Texto principal claro */
-  --dark-text-secondary: #a0aec0; /* Texto secundário (muted) */
-  --dark-border-primary: #4a5568; /* Borda principal */
-  --dark-border-secondary: #2d3748; /* Borda secundária (dentro da tabela) */
+  --dark-bg-primary: #1a202c;
+  --dark-bg-secondary: #2d3748;
+  --dark-bg-tertiary: #4a5568;
+  --dark-text-primary: #e2e8f0;
+  --dark-text-secondary: #a0aec0;
+  --dark-border-primary: #4a5568;
+  --dark-border-secondary: #2d3748;
 
   /* Cores de Acento (Adaptadas do tema claro ou novas) */
-  --accent-blue: #4299e1; /* Azul para botões primários, links */
-  --accent-red: #e53e3e; /* Vermelho para botões de exclusão */
-  --accent-yellow: #ecc94b; /* Amarelo para avisos ou edição */
-  --accent-green: #48bb78; /* Verde para sucesso ou tags */
-  --accent-purple: #9f7aea; /* Roxo para tags */
-  --accent-orange: #ed8936; /* Laranja para tags */
-  --accent-cyan: #38b2ac; /* Ciano para tags */
+  --accent-blue: #4299e1;
+  --accent-red: #e53e3e;
+  --accent-yellow: #ecc94b;
+  --accent-green: #48bb78;
+  --accent-purple: #9f7aea;
+  --accent-orange: #ed8936;
+  --accent-cyan: #38b2ac;
 
   /* Border radius */
-  --border-radius: 6px; /* Levemente ajustado */
+  --border-radius: 6px;
   --border-radius-lg: 10px;
   --border-radius-sm: 4px;
 
@@ -41,9 +41,9 @@
   /* Tipografia (Mantida) */
   --font-family-primary: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
   --font-size-2xl: 1.5rem;
-  --font-size-base: 0.95rem; /* Levemente ajustado */
+  --font-size-base: 0.95rem;
   --font-size-lg: 1.125rem;
-  --font-size-sm: 0.8rem; /* Levemente ajustado */
+  --font-size-sm: 0.8rem;
   --font-size-xl: 1.25rem;
 
   /* Transições (Mantida) */
@@ -103,7 +103,7 @@ textarea {
   font-size: var(--font-size-base);
   padding: var(--spacing-sm) var(--spacing-md);
   transition: border-color var(--transition), box-shadow var(--transition);
-  width: 100%; /* Default a largura total, ajustar conforme necessário */
+  width: 100%;
 }
 
 input[type="text"]:focus,
@@ -111,7 +111,7 @@ input[type="search"]:focus,
 select:focus,
 textarea:focus {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5); /* Foco azul */
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
   outline: none;
 }
 
@@ -157,24 +157,24 @@ input[type="checkbox"] {
   background-color: var(--dark-bg-secondary);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
-  overflow: hidden; /* Para conter a tabela e bordas arredondadas */
+  overflow: hidden;
   padding: var(--spacing-md);
 }
 
 .table-controls {
   align-items: center;
   display: flex;
-  flex-wrap: wrap; /* Permitir quebra em telas menores */
+  flex-wrap: wrap;
   gap: var(--spacing-md);
   justify-content: space-between;
   margin-bottom: var(--spacing-md);
 }
 
 .search-input {
-  background-color: var(--dark-bg-primary); /* Fundo ligeiramente diferente */
+  background-color: var(--dark-bg-primary);
   border: 1px solid var(--dark-border-primary);
-  flex-grow: 1; /* Ocupar espaço disponível */
-  max-width: 400px; /* Limitar largura máxima */
+  flex-grow: 1;
+  max-width: 400px;
 }
 
 .control-buttons {
@@ -193,7 +193,7 @@ input[type="checkbox"] {
 }
 
 .control-btn.add-btn:hover {
-  background-color: #2b6cb0; /* Azul mais escuro no hover */
+  background-color: #2b6cb0;
 }
 
 /* =============================================================================
@@ -201,7 +201,7 @@ input[type="checkbox"] {
 ============================================================================= */
 
 .vehicles-table {
-  border-collapse: collapse; /* Remove espaços entre células */
+  border-collapse: collapse;
   width: 100%;
 }
 
@@ -219,7 +219,7 @@ input[type="checkbox"] {
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  white-space: nowrap; /* Evitar quebra de linha no cabeçalho */
+  white-space: nowrap;
 }
 
 .vehicles-table th.sortable-header {
@@ -240,18 +240,18 @@ input[type="checkbox"] {
 }
 
 .vehicles-table tbody tr:last-child td {
-  border-bottom: none; /* Remover borda da última linha */
+  border-bottom: none;
 }
 
 /* Alinhamento específico para colunas */
 .vehicles-table th:first-child,
-.vehicles-table td:first-child { /* Checkbox */
+.vehicles-table td:first-child {
   text-align: center;
-  width: 40px; /* Largura fixa para checkbox */
+  width: 40px;
 }
 
 .vehicles-table th:last-child,
-.vehicles-table td:last-child { /* Ações */
+.vehicles-table td:last-child {
   text-align: right;
   white-space: nowrap;
 }
@@ -280,7 +280,7 @@ input[type="checkbox"] {
 .tag {
   border-radius: var(--border-radius-sm);
   color: var(--dark-text-primary);
-  font-size: 0.75rem; /* Menor que sm */
+  font-size: 0.75rem;
   font-weight: 500;
   margin: 0 2px;
   padding: 2px 6px;
@@ -328,7 +328,7 @@ input[type="checkbox"] {
   background-color: var(--dark-bg-tertiary);
   border-color: var(--dark-text-secondary);
   color: var(--dark-text-primary);
-  transform: none; /* Remover transform padrão de botão */
+  transform: none;
 }
 
 .action-btn.edit-btn {
@@ -337,8 +337,8 @@ input[type="checkbox"] {
 }
 
 .action-btn.edit-btn:hover {
-  background-color: rgba(236, 201, 75, 0.1); /* Fundo amarelo leve */
-  color: #f6e05e; /* Amarelo mais claro */
+  background-color: rgba(236, 201, 75, 0.1);
+  color: #f6e05e;
   border-color: #f6e05e;
 }
 
@@ -348,8 +348,8 @@ input[type="checkbox"] {
 }
 
 .action-btn.delete-btn:hover {
-  background-color: rgba(229, 62, 62, 0.1); /* Fundo vermelho leve */
-  color: #fc8181; /* Vermelho mais claro */
+  background-color: rgba(229, 62, 62, 0.1);
+  color: #fc8181;
   border-color: #fc8181;
 }
 
@@ -413,8 +413,8 @@ input[type="checkbox"] {
 .edit-vehicle-form {
   background-color: var(--dark-bg-secondary);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-lg); /* Sombra mais pronunciada para destacar */
-  margin: var(--spacing-xl) auto; /* Mais margem */
+  box-shadow: var(--shadow-lg);
+  margin: var(--spacing-xl) auto;
   max-width: 600px;
   padding: var(--spacing-lg);
 }
@@ -453,14 +453,9 @@ input[type="checkbox"] {
   margin-right: var(--spacing-sm);
 }
 
-/* Estilo para label do checkbox */
-.add-vehicle-form label input[type="checkbox"],
-.edit-vehicle-form label input[type="checkbox"] {
-  margin-right: var(--spacing-sm);
-}
 .add-vehicle-form label,
 .edit-vehicle-form label {
-  display: flex; /* Alinhar checkbox e texto */
+  display: flex;
   align-items: center;
   color: var(--dark-text-primary);
   font-weight: normal;
@@ -469,12 +464,12 @@ input[type="checkbox"] {
 
 .add-vehicle-form button,
 .edit-vehicle-form button {
-  min-width: 100px; /* Largura mínima */
+  min-width: 100px;
 }
 
 .add-vehicle-form button[type="submit"],
 .edit-vehicle-form button[type="submit"],
-.add-vehicle-form button:first-of-type, /* Assume que o primeiro é Salvar/Submit */
+.add-vehicle-form button:first-of-type,
 .edit-vehicle-form button:first-of-type {
   background-color: var(--accent-blue);
   color: white;
@@ -488,7 +483,7 @@ input[type="checkbox"] {
   background-color: #2b6cb0;
 }
 
-.add-vehicle-form button[type="button"]:last-of-type, /* Assume que o último é Cancelar */
+.add-vehicle-form button[type="button"]:last-of-type,
 .edit-vehicle-form button[type="button"]:last-of-type {
   background-color: transparent;
   border: 1px solid var(--dark-border-primary);
@@ -523,9 +518,6 @@ input[type="checkbox"] {
    RESPONSIVIDADE
 ============================================================================= */
 
-/* Estilos base já são mobile-first implicitamente */
-
-/* Telas maiores (tablets e desktops pequenos) */
 @media (min-width: 768px) {
   body {
     padding: var(--spacing-lg);
@@ -535,42 +527,38 @@ input[type="checkbox"] {
     padding: var(--spacing-lg);
   }
 
-  /* Evitar quebra de linha nos controles */
   .table-controls {
     flex-wrap: nowrap;
   }
 
-  /* Layout da tabela já é adequado, mas podemos ajustar espaçamentos */
   .vehicles-table th,
   .vehicles-table td {
     padding: var(--spacing-md);
   }
 }
 
-/* Telas grandes (desktops) */
 @media (min-width: 1024px) {
   body {
     margin: 0 auto;
-    max-width: 1600px; /* Aumentar largura máxima */
+    max-width: 1600px;
     padding: var(--spacing-xl);
   }
 
   h1 {
-    font-size: 2rem; /* Ajustar tamanho do título */
+    font-size: 2rem;
     margin-bottom: var(--spacing-xl);
   }
 }
 
-/* Estilos para telas muito pequenas onde a tabela pode quebrar */
 @media (max-width: 600px) {
   .table-container {
-    overflow-x: auto; /* Adicionar scroll horizontal se necessário */
+    overflow-x: auto;
   }
 
   .vehicles-table th,
   .vehicles-table td {
-    padding: var(--spacing-sm); /* Menor padding */
-    white-space: nowrap; /* Evitar quebra dentro das células */
+    padding: var(--spacing-sm);
+    white-space: nowrap;
   }
 
   .actions-cell {
@@ -582,8 +570,8 @@ input[type="checkbox"] {
   }
 
   .table-controls {
-     flex-direction: column; /* Empilhar controles */
-     align-items: stretch; /* Esticar input */
+     flex-direction: column;
+     align-items: stretch;
   }
 
   .search-input {
@@ -591,11 +579,11 @@ input[type="checkbox"] {
   }
 
   .control-buttons {
-    justify-content: space-between; /* Espaçar botões */
+    justify-content: space-between;
   }
 
   .pagination-controls {
-    flex-direction: column; /* Empilhar paginação */
+    flex-direction: column;
     gap: var(--spacing-sm);
     align-items: center;
   }
@@ -604,8 +592,6 @@ input[type="checkbox"] {
 /* =============================================================================
    ACESSIBILIDADE E CONFIGURAÇÕES ESPECIAIS
 ============================================================================= */
-
-/* Foco visível (já coberto pelos estilos de :focus) */
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -635,7 +621,6 @@ input[type="checkbox"] {
     display: none;
   }
 
-  /* Ajustar cores das tags para impressão */
   .tag {
     border: 1px solid #ccc;
     color: black !important;
