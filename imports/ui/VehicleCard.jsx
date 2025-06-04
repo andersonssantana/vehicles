@@ -50,7 +50,7 @@ export const VehicleCard = ({ veiculo, onEdit }) => {
           onClick={() => onEdit(veiculo)}
           aria-label={`Editar veículo ${veiculo.veiculo}`}
         >
-          ✏️ Editar
+          Editar
         </button>
         
         <button 
@@ -59,7 +59,7 @@ export const VehicleCard = ({ veiculo, onEdit }) => {
           onClick={() => handleRemoveVehicle(veiculo)}
           aria-label={`Remover veículo ${veiculo.veiculo}`}
         >
-          🗑️ Remover Veículo
+          Remover
         </button>
       </div>
     </div>
