@@ -55,10 +55,9 @@ O sistema gerencia uma coleção de veículos fictícios do universo GTA, catego
 - **➕ Cadastro de Veículos**: Formulário completo com dropdowns para categorias e locais predefinidos
 - **✏️ Edição de Veículos**: Interface para modificar informações de veículos existentes
 - **🗑️ Remoção de Veículos**: Exclusão segura com confirmação para evitar remoções acidentais
-- **📖 Visualização Detalhada**: Exibição organizada de todas as informações do veículo
 
 #### 🎨 **Interface e Experiência do Usuário**
-- **📱 Listagem Responsiva**: Visualização adaptável de veículos em cards organizados
+- **📱 Listagem Responsiva**: Visualização adaptável de veículos em tabela
 - **🏷️ Sistema de Tags**: Identificação visual de upgrades e características especiais
 - **📊 Ordenação Dinâmica**: Ordenar por nome do veículo ou local de armazenamento (ascendente/descendente)
 - **⚡ Tempo Real**: Atualizações automáticas usando reactive data do Meteor
@@ -126,6 +125,7 @@ projeto-vehicles/
 │       ├── App.jsx          # Componente raiz da aplicação
 │       ├── Info.jsx         # Componente principal com subscriptions
 │       ├── VehicleCard.jsx  # Card individual de veículo
+│       ├── VehicleRow.jsx   # Linha individual de veículo
 │       ├── AddVehicleForm.jsx    # Formulário de cadastro
 │       └── EditVehicleForm.jsx   # Formulário de edição
 ├── server/                  # Código do servidor
@@ -307,47 +307,15 @@ const handleRemoveVehicle = (veiculo) => {
 A aplicação foi desenvolvida priorizando a experiência móvel, com expansões progressivas para telas maiores:
 
 #### 📱 Mobile (até 767px)
-- Layout em coluna única
-- Cards em stack vertical
+- Tabela com duas colunas essenciais
 - Botões full-width
 - Formulários otimizados para touch
 
-#### 📐 Tablet (768px - 1023px)
-- Grid responsivo com 2 colunas
-- Headers de cards horizontais
-- Botões com tamanho otimizado
-- Formulários com layout melhorado
-
 #### 🖥️ Desktop (1024px+)
-- Grid com 3+ colunas
+- Tabela full-size
 - Hover effects avançados
 - Espaçamentos expandidos
 - Animações aprimoradas
-
-### Breakpoints Estratégicos
-
-```css
-/* Mobile First - Base */
-.vehicles-list { 
-  display: flex; 
-  flex-direction: column; 
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-  .vehicles-list { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .vehicles-list { 
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-  }
-}
-```
 
 ## 🔧 Instalação e Execução
 
