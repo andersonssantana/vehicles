@@ -419,7 +419,6 @@ A aplicação foi desenvolvida priorizando a experiência móvel, com expansões
 ### Coleções MongoDB
 
 - **VeiculosCollection**: Armazena todos os dados dos veículos com índices otimizados
-- **LinksCollection**: Coleção exemplo padrão do Meteor (não utilizada)
 
 ## ⚡ Funcionalidades do Meteor
 
