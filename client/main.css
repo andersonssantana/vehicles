@@ -12,7 +12,7 @@
   --dark-border-primary: #4a5568;
   --dark-border-secondary: #2d3748;
 
-  /* Cores de Acento (Adaptadas do tema claro ou novas) */
+  /* Cores de Acento */
   --accent-blue: #4299e1;
   --accent-red: #e53e3e;
   --accent-yellow: #ecc94b;
@@ -26,19 +26,19 @@
   --border-radius-lg: 10px;
   --border-radius-sm: 4px;
 
-  /* Espaçamentos (Mantidos) */
+  /* Espaçamentos */
   --spacing-lg: 24px;
   --spacing-md: 16px;
   --spacing-sm: 8px;
   --spacing-xl: 32px;
   --spacing-xs: 4px;
 
-  /* Sombras (Adaptadas para tema escuro) */
+  /* Sombras */
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
 
-  /* Tipografia (Mantida) */
+  /* Tipografia */
   --font-family-primary: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
   --font-size-2xl: 1.5rem;
   --font-size-base: 0.95rem;
@@ -46,7 +46,7 @@
   --font-size-sm: 0.8rem;
   --font-size-xl: 1.25rem;
 
-  /* Transições (Mantida) */
+  /* Transições */
   --transition: all 0.2s ease-in-out;
 }
 
@@ -73,16 +73,18 @@ body {
   padding: var(--spacing-md);
 }
 
-h1 {
+h1, h2 {
   color: var(--dark-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+h1 {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  margin-bottom: var(--spacing-lg);
   text-align: center;
 }
 
 h2 {
-  color: var(--dark-text-primary);
   font-size: var(--font-size-xl);
   font-weight: 600;
   margin-bottom: var(--spacing-md);
@@ -150,15 +152,25 @@ input[type="checkbox"] {
 }
 
 /* =============================================================================
-   CONTAINER E CONTROLES DA TABELA
+   COMPONENTES COMUNS
 ============================================================================= */
 
-.table-container {
+.table-container,
+.add-vehicle-form,
+.edit-vehicle-form {
   background-color: var(--dark-bg-secondary);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
   overflow: hidden;
   padding: var(--spacing-md);
+}
+
+.add-vehicle-form,
+.edit-vehicle-form {
+  box-shadow: var(--shadow-lg);
+  margin: var(--spacing-xl) auto;
+  max-width: 600px;
+  padding: var(--spacing-lg);
 }
 
 .table-controls {
@@ -257,18 +269,22 @@ input[type="checkbox"] {
 }
 
 /* =============================================================================
-   ESTILOS DAS CÉLULAS ESPECÍFICAS (BADGES, TAGS, AÇÕES)
+   ELEMENTOS DE INTERFACE
 ============================================================================= */
 
-.category-badge {
-  background-color: var(--accent-blue);
+.category-badge,
+.tag {
   border-radius: var(--border-radius-sm);
-  color: white;
   display: inline-block;
   font-size: var(--font-size-sm);
   font-weight: 600;
   padding: 2px 8px;
   text-transform: capitalize;
+}
+
+.category-badge {
+  background-color: var(--accent-blue);
+  color: white;
 }
 
 .tags-cell {
@@ -278,7 +294,6 @@ input[type="checkbox"] {
 }
 
 .tag {
-  border-radius: var(--border-radius-sm);
   color: var(--dark-text-primary);
   font-size: 0.75rem;
   font-weight: 500;
@@ -288,7 +303,7 @@ input[type="checkbox"] {
   white-space: nowrap;
 }
 
-/* Cores específicas para tags (usando variáveis de acento) */
+/* Cores específicas para tags */
 .tag-imani {
   background-color: var(--accent-green);
   color: var(--dark-bg-primary);
@@ -406,23 +421,11 @@ input[type="checkbox"] {
 }
 
 /* =============================================================================
-   FORMULÁRIOS (Adaptação Tema Escuro)
+   FORMULÁRIOS
 ============================================================================= */
-
-.add-vehicle-form,
-.edit-vehicle-form {
-  background-color: var(--dark-bg-secondary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-lg);
-  margin: var(--spacing-xl) auto;
-  max-width: 600px;
-  padding: var(--spacing-lg);
-}
 
 .add-vehicle-form h2,
 .edit-vehicle-form h2 {
-  color: var(--dark-text-primary);
-  margin-bottom: var(--spacing-lg);
   text-align: center;
 }
 
@@ -440,26 +443,10 @@ input[type="checkbox"] {
   font-size: var(--font-size-sm);
 }
 
-/* Inputs já estilizados globalmente */
-
 .add-vehicle-form textarea,
 .edit-vehicle-form textarea {
   min-height: 100px;
   resize: vertical;
-}
-
-.add-vehicle-form input[type="checkbox"],
-.edit-vehicle-form input[type="checkbox"] {
-  margin-right: var(--spacing-sm);
-}
-
-.add-vehicle-form label,
-.edit-vehicle-form label {
-  display: flex;
-  align-items: center;
-  color: var(--dark-text-primary);
-  font-weight: normal;
-  font-size: var(--font-size-base);
 }
 
 .add-vehicle-form button,
@@ -467,6 +454,7 @@ input[type="checkbox"] {
   min-width: 100px;
 }
 
+/* Botões de formulário */
 .add-vehicle-form button[type="submit"],
 .edit-vehicle-form button[type="submit"],
 .add-vehicle-form button:first-of-type,
@@ -498,7 +486,7 @@ input[type="checkbox"] {
 }
 
 /* =============================================================================
-   COMPONENTES DE ESTADO (TEMA ESCURO)
+   ESTADOS E UTILITÁRIOS
 ============================================================================= */
 
 .loading {
@@ -590,7 +578,7 @@ input[type="checkbox"] {
 }
 
 /* =============================================================================
-   ACESSIBILIDADE E CONFIGURAÇÕES ESPECIAIS
+   ACESSIBILIDADE
 ============================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
