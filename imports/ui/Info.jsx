@@ -10,14 +10,28 @@ export const Info = () => {
   
   const [sortKey, setSortKey] = useState('veiculo');
   const [sortOrder, setSortOrder] = useState(1);
-
+  const [searchTerm, setSearchTerm] = useState('');
   const [isAdding, setIsAdding] = useState(false);
   const [editingVehicle, setEditingVehicle] = useState(null);
 
-  // Busca os veículos ordenados
+  // Busca os veículos ordenados e filtrados
   const veiculos = useFind(
-    () => VeiculosCollection.find({}, { sort: { [sortKey]: sortOrder } }),
-    [sortKey, sortOrder]
+    () => {
+      const query = {};
+      
+      // Adiciona filtro de busca se houver termo
+      if (searchTerm.trim() !== '') {
+        query.veiculo = { 
+          $regex: searchTerm, 
+          $options: 'i'
+        };
+      }
+      
+      return VeiculosCollection.find(query, { 
+        sort: { [sortKey]: sortOrder } 
+      });
+    },
+    [sortKey, sortOrder, searchTerm]
   );
 
   // Exibe loading enquanto os dados são carregados
@@ -47,11 +61,24 @@ export const Info = () => {
     }
   };
 
+  // Função para limpar a pesquisa
+  const clearSearch = () => {
+    setSearchTerm('');
+  };
+
   // Renderiza a tabela principal
   return (
     <div className="table-container">
       <div className="table-controls">
-        <input type="search" placeholder="Pesquisar veículos..." className="search-input" />
+        <div className="search-container">
+          <input 
+            type="search" 
+            placeholder="Pesquisar veículos..." 
+            className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <div className="control-buttons">
           <button className="control-btn add-btn" onClick={() => setIsAdding(true)}>
             + Adicionar Veículo
@@ -79,13 +106,21 @@ export const Info = () => {
           </tr>
         </thead>
         <tbody>
-          {veiculos.map((veiculo) => (
-            <VehicleRow
-              key={veiculo._id}
-              veiculo={veiculo}
-              onEdit={setEditingVehicle}
-            />
-          ))}
+          {veiculos.length > 0 ? (
+            veiculos.map((veiculo) => (
+              <VehicleRow
+                key={veiculo._id}
+                veiculo={veiculo}
+                onEdit={setEditingVehicle}
+              />
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6" className="no-results">
+                Nenhum veículo encontrado
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 
