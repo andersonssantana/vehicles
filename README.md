@@ -482,12 +482,6 @@ Meteor.methods({
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-### 🌐 Contato
-
-- 🌐 [GitHub](https://github.com/andersonssantana/)
-- 👔 [LinkedIn](https://www.linkedin.com/in/andersonssantana/)
-- ✉️ [E-mail](mailto:anderssantana@outlook.com)
-
 ### Documentação e Recursos de Aprendizado
 
 #### 📚 Meteor.js
@@ -507,6 +501,12 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 #### 🗄️ MongoDB
 - 🍃 [MongoDB Documentation](https://docs.mongodb.com/)
 - 📚 [MongoDB University](https://university.mongodb.com/)
+
+### 🌐 Contato
+
+- 🌐 [GitHub](https://github.com/andersonssantana/)
+- 👔 [LinkedIn](https://www.linkedin.com/in/andersonssantana/)
+- ✉️ [E-mail](mailto:anderssantana@outlook.com)
 
 ---
 
