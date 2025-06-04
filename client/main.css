@@ -3,48 +3,48 @@
 ============================================================================= */
 
 :root {
+  /* Border radius */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-sm: 4px;
+  
+  /* Cores de fundo e texto */
+  --color-background: #f5f5f5;
+  --color-border: #dee2e6;
+  --color-border-light: #e9ecef;
+  --color-text: #333333;
+  --color-text-muted: #6c757d;
+  --color-white: #ffffff;
+  
   /* Cores principais */
+  --color-danger: #dc3545;
+  --color-dark: #343a40;
+  --color-info: #17a2b8;
+  --color-light: #f8f9fa;
   --color-primary: #007bff;
   --color-secondary: #6c757d;
   --color-success: #28a745;
   --color-warning: #fd7e14;
-  --color-danger: #dc3545;
-  --color-info: #17a2b8;
-  --color-dark: #343a40;
-  --color-light: #f8f9fa;
-  
-  /* Cores de fundo e texto */
-  --color-background: #f5f5f5;
-  --color-white: #ffffff;
-  --color-text: #333333;
-  --color-text-muted: #6c757d;
-  --color-border: #dee2e6;
-  --color-border-light: #e9ecef;
-  
-  /* Border radius */
-  --border-radius: 8px;
-  --border-radius-sm: 4px;
-  --border-radius-lg: 12px;
-  
-  /* Sombras */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   
   /* Espaçamentos */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
   --spacing-lg: 24px;
+  --spacing-md: 16px;
+  --spacing-sm: 8px;
   --spacing-xl: 32px;
+  --spacing-xs: 4px;
+  
+  /* Sombras */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   
   /* Tipografia */
   --font-family-primary: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-  --font-size-sm: 0.75rem;
+  --font-size-2xl: 1.5rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.125rem;
+  --font-size-sm: 0.75rem;
   --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
   
   /* Transições */
   --transition: all 0.3s ease;
@@ -52,9 +52,9 @@
 
 /* Reset básico */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /* =============================================================================
@@ -62,56 +62,55 @@
 ============================================================================= */
 
 body {
-  padding: var(--spacing-md);
-  font-family: var(--font-family-primary);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   background-color: var(--color-background);
   color: var(--color-text);
+  font-family: var(--font-family-primary);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: var(--spacing-md);
 }
 
-/* Cabeçalhos */
 h1 {
+  color: var(--color-dark);
   font-size: var(--font-size-2xl);
+  font-weight: 700;
   margin-bottom: var(--spacing-lg);
   text-align: center;
-  color: var(--color-dark);
-  font-weight: 700;
 }
 
 h2 {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--spacing-md);
   color: var(--color-dark);
+  font-size: var(--font-size-xl);
   font-weight: 600;
+  margin-bottom: var(--spacing-md);
 }
 
 /* =============================================================================
    COMPONENTES DE ESTADO
 ============================================================================= */
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--spacing-xl);
-  font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
-  text-align: center;
-  background-color: var(--color-light);
+.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
   border-radius: var(--border-radius);
+  color: #721c24;
   margin: var(--spacing-lg) 0;
+  padding: var(--spacing-xl);
+  text-align: center;
 }
 
-.error {
-  text-align: center;
-  padding: var(--spacing-xl);
+.loading {
+  align-items: center;
+  background-color: var(--color-light);
   border-radius: var(--border-radius);
+  color: var(--color-text-muted);
+  display: flex;
+  font-size: var(--font-size-lg);
+  justify-content: center;
   margin: var(--spacing-lg) 0;
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  padding: var(--spacing-xl);
+  text-align: center;
 }
 
 /* =============================================================================
@@ -129,29 +128,29 @@ h2 {
 ============================================================================= */
 
 .vehicle-card {
-  position: relative;
+  animation: fadeIn 0.5s ease-forward;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
   padding: var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  background-color: var(--color-white);
-  box-shadow: var(--shadow-sm);
+  position: relative;
   transition: var(--transition);
-  animation: fadeIn 0.5s ease-forward;
 }
 
 .vehicle-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
   background: linear-gradient(to bottom, var(--color-primary), var(--color-info));
   border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 4px;
 }
 
 .vehicle-card:hover {
@@ -165,32 +164,32 @@ h2 {
 
 /* Header do card */
 .vehicle-header {
+  border-bottom: 1px solid var(--color-border-light);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
   padding-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--color-border-light);
 }
 
 .vehicle-name {
+  color: var(--color-dark);
   font-size: var(--font-size-lg);
   font-weight: 700;
-  color: var(--color-dark);
   line-height: 1.3;
 }
 
 .vehicle-category {
+  align-self: flex-start;
   background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  color: var(--color-white);
-  padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-white);
   font-size: var(--font-size-sm);
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
-  align-self: flex-start;
-  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-transform: uppercase;
 }
 
 /* Informações do veículo */
@@ -199,9 +198,9 @@ h2 {
 }
 
 .info-item {
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.5;
   font-size: var(--font-size-base);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
 }
 
 .info-item:last-child {
@@ -210,8 +209,8 @@ h2 {
 
 .info-item strong {
   color: var(--color-dark);
-  font-weight: 600;
   display: block;
+  font-weight: 600;
   margin-bottom: var(--spacing-xs);
 }
 
@@ -224,29 +223,21 @@ h2 {
 }
 
 .tag {
-  padding: 1px 9px;
+  border: 1px solid var(--color-white);
   border-radius: var(--border-radius-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--color-white);
   font-size: var(--font-size-sm);
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 1px 9px;
+  text-transform: uppercase;
   transition: var(--transition);
-  border: 1px solid var(--color-white);
 }
 
 .tag:hover {
-  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-}
-
-.tag-imani {
-  background: linear-gradient(135deg, #2c7a4b, #4acfa9);
-}
-
-.tag-hsw {
-  background: linear-gradient(135deg, #d2691e, #ff9f43);
+  transform: translateY(-1px);
 }
 
 .tag-armed {
@@ -257,62 +248,70 @@ h2 {
   background: linear-gradient(135deg, #483d8b, #7b68ee);
 }
 
+.tag-hsw {
+  background: linear-gradient(135deg, #d2691e, #ff9f43);
+}
+
+.tag-imani {
+  background: linear-gradient(135deg, #2c7a4b, #4acfa9);
+}
+
 /* =============================================================================
    AÇÕES DO VEÍCULO
 ============================================================================= */
 
 .vehicle-card__actions {
   display: flex;
-  justify-content: space-between;
   gap: var(--spacing-sm);
+  justify-content: space-between;
   margin-top: auto;
   padding-top: var(--spacing-md);
 }
 
 /* Estilos base para botões */
-.vehicle-card__edit-btn,
-.vehicle-card__delete-btn {
-  position: relative;
-  flex: 1;
-  padding: 10px 0;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: center;
+.vehicle-card__delete-btn,
+.vehicle-card__edit-btn {
   border: none;
   border-radius: var(--border-radius-sm);
   color: var(--color-white);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
   overflow: hidden;
+  padding: 10px 0;
+  position: relative;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.vehicle-card__edit-btn::before,
-.vehicle-card__delete-btn::before {
+.vehicle-card__delete-btn::before,
+.vehicle-card__edit-btn::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   content: '';
+  height: 100%;
+  left: -100%;
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
+  width: 100%;
 }
 
-.vehicle-card__edit-btn:hover,
-.vehicle-card__delete-btn:hover {
-  transform: translateY(-2px);
+.vehicle-card__delete-btn:hover,
+.vehicle-card__edit-btn:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-.vehicle-card__edit-btn:hover::before,
-.vehicle-card__delete-btn:hover::before {
+.vehicle-card__delete-btn:hover::before,
+.vehicle-card__edit-btn:hover::before {
   left: 100%;
 }
 
-.vehicle-card__edit-btn:active,
-.vehicle-card__delete-btn:active {
-  transform: translateY(0);
+.vehicle-card__delete-btn:active,
+.vehicle-card__edit-btn:active {
   box-shadow: var(--shadow-sm);
+  transform: translateY(0);
 }
 
 /* Botão Editar */
@@ -344,24 +343,24 @@ h2 {
 ============================================================================= */
 
 .add-vehicle-btn {
-  padding: var(--spacing-sm) var(--spacing-md);
   background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  color: var(--color-white);
   border: none;
   border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-white);
+  cursor: pointer;
   font-size: var(--font-size-base);
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
   margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-transform: uppercase;
+  transition: var(--transition);
 }
 
 .add-vehicle-btn:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .add-vehicle-btn:focus {
@@ -376,18 +375,18 @@ h2 {
 .add-vehicle-form,
 .edit-vehicle-form {
   background-color: var(--color-white);
-  padding: var(--spacing-md);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
-  max-width: 500px;
   margin: var(--spacing-md) auto;
+  max-width: 500px;
+  padding: var(--spacing-md);
 }
 
 .add-vehicle-form h2,
 .edit-vehicle-form h2 {
+  color: var(--color-dark);
   margin-bottom: var(--spacing-lg);
   text-align: center;
-  color: var(--color-dark);
 }
 
 .add-vehicle-form div,
@@ -397,23 +396,23 @@ h2 {
 
 .add-vehicle-form label,
 .edit-vehicle-form label {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  font-weight: 600;
   color: var(--color-dark);
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
 }
 
 .add-vehicle-form input[type="text"],
-.add-vehicle-form textarea,
 .add-vehicle-form select,
+.add-vehicle-form textarea,
 .edit-vehicle-form input[type="text"],
-.edit-vehicle-form textarea,
-.edit-vehicle-form select {
-  width: 100%;
-  padding: var(--spacing-sm);
+.edit-vehicle-form select,
+.edit-vehicle-form textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-base);
+  padding: var(--spacing-sm);
+  width: 100%;
 }
 
 .add-vehicle-form textarea,
@@ -429,26 +428,88 @@ h2 {
 
 .add-vehicle-form button,
 .edit-vehicle-form button {
-  padding: var(--spacing-sm) var(--spacing-md);
   background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  color: var(--color-white);
   border: none;
   border-radius: var(--border-radius-sm);
-  font-weight: 600;
+  color: var(--color-white);
   cursor: pointer;
-  transition: var(--transition);
+  font-weight: 600;
   margin-right: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: var(--transition);
 }
 
 .add-vehicle-form button:hover,
 .edit-vehicle-form button:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .add-vehicle-form button:last-child,
 .edit-vehicle-form button:last-child {
   background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+}
+
+/* =============================================================================
+   OPÇÕES DE ORDENAÇÃO
+============================================================================= */
+
+.sort-options {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--spacing-md);
+}
+
+.sort-options label {
+  color: var(--color-dark);
+  font-weight: 600;
+  margin-right: var(--spacing-sm);
+}
+
+.sort-select {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: var(--transition);
+}
+
+.sort-select:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.sort-select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sort-toggle-btn {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
+  border: none;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-left: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: var(--transition);
+}
+
+.sort-toggle-btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.sort-toggle-btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* =============================================================================
@@ -478,14 +539,14 @@ h2 {
   
   .vehicles-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
   
   .vehicle-header {
+    align-items: flex-start;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
   }
   
   .vehicle-name {
@@ -502,8 +563,8 @@ h2 {
 /* Desktop */
 @media (min-width: 1024px) {
   body {
-    max-width: 1200px;
     margin: 0 auto;
+    max-width: 1200px;
     padding: var(--spacing-xl);
   }
   
@@ -513,8 +574,8 @@ h2 {
   }
   
   .vehicles-list {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: var(--spacing-xl);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
   
   .vehicle-card {
@@ -522,8 +583,8 @@ h2 {
   }
   
   .vehicle-card:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
   }
 }
 
@@ -557,73 +618,15 @@ h2 {
 
 /* Estilos para impressão */
 @media print {
+  .add-vehicle-btn,
   .vehicle-card__delete-btn,
-  .vehicle-card__edit-btn,
-  .add-vehicle-btn {
+  .vehicle-card__edit-btn {
     display: none;
   }
   
   .vehicle-card {
-    break-inside: avoid;
-    box-shadow: none;
     border: 2px solid var(--color-border);
+    box-shadow: none;
+    break-inside: avoid;
   }
-}
-
-.sort-options {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
-}
-
-.sort-options label {
-  margin-right: var(--spacing-sm);
-  font-weight: 600;
-  color: var(--color-dark);
-}
-
-.sort-select {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  background-color: var(--color-white);
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.sort-select:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.sort-select:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.sort-toggle-btn {
-  padding: var(--spacing-sm) var(--spacing-md);
-  margin-left: var(--spacing-sm);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
-.sort-toggle-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.sort-toggle-btn:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
