@@ -467,15 +467,6 @@ input[type="checkbox"] {
   font-size: var(--font-size-base);
 }
 
-/* Botões do formulário */
-.add-vehicle-form div:last-of-type,
-.edit-vehicle-form div:last-of-type {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: flex-end; /* Alinhar botões à direita */
-  margin-top: var(--spacing-lg);
-}
-
 .add-vehicle-form button,
 .edit-vehicle-form button {
   min-width: 100px; /* Largura mínima */
@@ -487,6 +478,7 @@ input[type="checkbox"] {
 .edit-vehicle-form button:first-of-type {
   background-color: var(--accent-blue);
   color: white;
+  margin-right: var(--spacing-sm);
 }
 
 .add-vehicle-form button[type="submit"]:hover,
@@ -579,13 +571,6 @@ input[type="checkbox"] {
   .vehicles-table td {
     padding: var(--spacing-sm); /* Menor padding */
     white-space: nowrap; /* Evitar quebra dentro das células */
-  }
-
-  .vehicles-table th:nth-child(3), /* Ocultar Categoria */
-  .vehicles-table td:nth-child(3),
-  .vehicles-table th:nth-child(4), /* Ocultar Local */
-  .vehicles-table td:nth-child(4) {
-     /* display: none; */ /* Descomentar se quiser ocultar colunas */
   }
 
   .actions-cell {
