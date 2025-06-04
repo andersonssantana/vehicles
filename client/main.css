@@ -40,7 +40,7 @@
 
   /* Tipografia */
   --font-family-primary: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-  --font-size-2xl: 1.5rem;
+  --font-size-2xl: 2.5rem;
   --font-size-base: 0.95rem;
   --font-size-lg: 1.125rem;
   --font-size-sm: 0.8rem;
@@ -69,6 +69,7 @@ body {
   background-color: var(--dark-bg-primary);
   color: var(--dark-text-primary);
   font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
   line-height: 1.5;
   padding: var(--spacing-md);
 }
@@ -196,7 +197,7 @@ input[type="checkbox"] {
 }
 
 .control-btn {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xl);
   padding: var(--spacing-xs) var(--spacing-sm);
 }
 
@@ -228,11 +229,20 @@ input[type="checkbox"] {
 
 .vehicles-table th {
   color: var(--dark-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xl);
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.vehicles-table th:nth-child(3),
+.vehicles-table td:nth-child(3),
+.vehicles-table th:nth-child(4),
+.vehicles-table td:nth-child(4),
+.vehicles-table th:nth-child(5),
+.vehicles-table td:nth-child(5) {
+  display: none;
 }
 
 .vehicles-table th.sortable-header {
@@ -335,7 +345,7 @@ input[type="checkbox"] {
   border-radius: var(--border-radius-sm);
   color: var(--dark-text-secondary);
   cursor: pointer;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-2xl);
   margin: 0 2px;
   padding: 4px 8px;
 }
@@ -528,6 +538,7 @@ input[type="checkbox"] {
 
 @media (min-width: 1024px) {
   body {
+    font-size: var(--font-size-base);
     margin: 0 auto;
     max-width: 1600px;
     padding: var(--spacing-xl);
@@ -536,6 +547,27 @@ input[type="checkbox"] {
   h1 {
     font-size: 2rem;
     margin-bottom: var(--spacing-xl);
+  }
+
+  .action-btn {
+    font-size: var(--font-size-sm);
+  }
+
+  .control-btn {
+  font-size: var(--font-size-sm);
+}
+
+  .vehicles-table th {
+    font-size: var(--font-size-base);
+  }
+
+  .vehicles-table th:nth-child(3),
+  .vehicles-table td:nth-child(3),
+  .vehicles-table th:nth-child(4),
+  .vehicles-table td:nth-child(4),
+  .vehicles-table th:nth-child(5),
+  .vehicles-table td:nth-child(5) {
+    display: table-cell;
   }
 }
 
