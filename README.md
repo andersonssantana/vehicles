@@ -33,8 +33,8 @@ Este projeto serve como um **laboratório prático** para familiarização com o
 ### 🎮 Sobre o Contexto
 
 O sistema gerencia uma coleção de veículos fictícios do universo GTA, categorizando-os por tipo e apresentando informações como:
-- **Categoria do veículo**
-- **Local de armazenamento** no jogo
+- **Categoria do veículo** (15 categorias disponíveis: Commercial, Compacts, Coupes, Cycles, Military, Motorcycles, Muscle, Off-Road, Open Wheel, Sedans, Service, Sports, Sports Classics, Super, Vans)
+- **Local de armazenamento** no jogo (12 locais predefinidos: Agency, Arcade, Arena Workshop, Casino Penthouse, Facility, Garment Factory, Office Garages, etc.)
 - **Características principais** e especificações
 - **Upgrades especiais** (Imani Tech, HSW, Arena War)
 - **Capacidades de combate** (veículos armados)
@@ -52,7 +52,7 @@ O sistema gerencia uma coleção de veículos fictícios do universo GTA, catego
 ### 🎮 Funcionalidades da Aplicação
 
 #### 📋 **Gestão Completa de Veículos (CRUD)**
-- **➕ Cadastro de Veículos**: Formulário completo para adicionar novos veículos com todos os campos
+- **➕ Cadastro de Veículos**: Formulário completo com dropdowns para categorias e locais predefinidos
 - **✏️ Edição de Veículos**: Interface para modificar informações de veículos existentes
 - **🗑️ Remoção de Veículos**: Exclusão segura com confirmação para evitar remoções acidentais
 - **📖 Visualização Detalhada**: Exibição organizada de todas as informações do veículo
@@ -60,6 +60,7 @@ O sistema gerencia uma coleção de veículos fictícios do universo GTA, catego
 #### 🎨 **Interface e Experiência do Usuário**
 - **📱 Listagem Responsiva**: Visualização adaptável de veículos em cards organizados
 - **🏷️ Sistema de Tags**: Identificação visual de upgrades e características especiais
+- **📊 Ordenação Dinâmica**: Ordenar por nome do veículo ou local de armazenamento (ascendente/descendente)
 - **⚡ Tempo Real**: Atualizações automáticas usando reactive data do Meteor
 - **📱 Mobile-First**: Interface otimizada para dispositivos móveis e desktop
 - **🎯 UX Moderna**: Animações suaves, feedback visual e transições aprimoradas
@@ -67,7 +68,7 @@ O sistema gerencia uma coleção de veículos fictícios do universo GTA, catego
 - **🔄 Estados de Loading**: Indicadores visuais durante carregamento de dados
 
 #### 🛡️ **Validação e Segurança**
-- **✅ Validação de Formulários**: Campos obrigatórios e validação client-side
+- **✅ Validação de Formulários**: Campos obrigatórios e dropdowns com opções predefinidas
 - **🔒 Confirmações de Ação**: Modais de confirmação para ações destrutivas
 - **🛡️ Sanitização de Dados**: Tratamento seguro de entrada de dados
 - **📝 Feedback de Erros**: Mensagens informativas para o usuário
@@ -118,6 +119,9 @@ projeto-vehicles/
 ├── imports/                 # Código compartilhado
 │   ├── api/                 # Definições de coleções e métodos
 │   │   └── veiculos.js      # Coleção de veículos
+│   ├── helpers/             # Utilitários e constantes
+│   │   ├── categories.js    # Lista de categorias de veículos
+│   │   └── possibleLocations.js # Lista de locais de armazenamento
 │   └── ui/                  # Componentes React
 │       ├── App.jsx          # Componente raiz da aplicação
 │       ├── Info.jsx         # Componente principal com subscriptions
@@ -131,16 +135,44 @@ projeto-vehicles/
 └── package.json             # Dependências e scripts
 ```
 
+### Arquivos de Helpers
+
+#### 📂 `imports/helpers/categories.js`
+Define as 15 categorias de veículos disponíveis no sistema:
+```javascript
+const categories = [
+  "Commercial", "Compacts", "Coupes", "Cycles", "Military",
+  "Motorcycles", "Muscle", "Off-Road", "Open Wheel", "Sedans",
+  "Service", "Sports", "Sports Classics", "Super", "Vans"
+];
+```
+
+#### 📂 `imports/helpers/possibleLocations.js`
+Define os 12 locais de armazenamento predefinidos:
+```javascript
+const possibleLocations = [
+  "Agency: Hawick", "Arcade: Eight-Bit - Vinewood", "Arena Workshop",
+  "Casino Master Penthouse", "Facility: Lago Zancudo", "Garment Factory",
+  "Integrity Way, 28", "MC Clubhouse: Downtown Vinewood",
+  "Office Garage 1", "Office Garage 2", "Office Garage 3", "Terrorbyte"
+];
+```
+
 ### Fluxo de Dados e Estados
 
 ```javascript
 // Estados principais da aplicação
-const [isAdding, setIsAdding] = useState(false);      // Modo cadastro
-const [editingVehicle, setEditingVehicle] = useState(null);  // Modo edição
+const [isAdding, setIsAdding] = useState(false);           // Modo cadastro
+const [editingVehicle, setEditingVehicle] = useState(null); // Modo edição
+const [sortKey, setSortKey] = useState('veiculo');         // Chave de ordenação
+const [sortOrder, setSortOrder] = useState(1);             // Ordem (1 ou -1)
 
-// Subscription reativa
+// Subscription reativa com ordenação dinâmica
 const isLoading = useSubscribe('veiculos');
-const veiculos = useFind(() => VeiculosCollection.find({}, { sort: { veiculo: 1 } }));
+const veiculos = useFind(
+  () => VeiculosCollection.find({}, { sort: { [sortKey]: sortOrder } }),
+  [sortKey, sortOrder]
+);
 ```
 
 ### Sistema de Design
@@ -180,8 +212,14 @@ const veiculos = useFind(() => VeiculosCollection.find({}, { sort: { veiculo: 1 
   });
 }
 
-// Componente AddVehicleForm.jsx
+// Componente AddVehicleForm.jsx com dropdowns
 const handleSubmit = () => {
+  const vehicleData = {
+    veiculo, categoria, local,
+    caracteristicas_especiais: caracteristicasEspeciais,
+    imani_tech: imaniTech, hsw, armado, arena,
+  };
+  
   Meteor.call('veiculos.insert', vehicleData, (error) => {
     if (error) {
       console.error('Erro ao adicionar veículo:', error);
@@ -192,16 +230,18 @@ const handleSubmit = () => {
 };
 ```
 
-### 📖 **Read (Leitura)**
+### 📖 **Read (Leitura) com Ordenação**
 ```javascript
 // Publication server-side
 Meteor.publish("veiculos", function () {
   return VeiculosCollection.find();
 });
 
-// Subscription client-side
-const isLoading = useSubscribe('veiculos');
-const veiculos = useFind(() => VeiculosCollection.find({}, { sort: { veiculo: 1 } }));
+// Subscription client-side com ordenação dinâmica
+const veiculos = useFind(
+  () => VeiculosCollection.find({}, { sort: { [sortKey]: sortOrder } }),
+  [sortKey, sortOrder]
+);
 ```
 
 ### ✏️ **Update (Edição)**
@@ -212,15 +252,15 @@ const veiculos = useFind(() => VeiculosCollection.find({}, { sort: { veiculo: 1 
   return VeiculosCollection.updateAsync(_id, { $set: updateData });
 }
 
-// Componente EditVehicleForm.jsx
-const handleSubmit = () => {
-  Meteor.call('veiculos.update', formData, (error) => {
-    if (error) {
-      console.error('Erro ao editar veículo:', error);
-    } else {
-      onSave();
-    }
-  });
+// Componente EditVehicleForm.jsx com estado unificado
+const [formData, setFormData] = useState({ ...veiculo });
+
+const handleChange = (e) => {
+  const { name, value, type, checked } = e.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === 'checkbox' ? checked : value,
+  }));
 };
 ```
 
@@ -237,6 +277,27 @@ const handleRemoveVehicle = (veiculo) => {
     Meteor.call('veiculos.remove', veiculo);
   }
 };
+```
+
+## 🎨 Sistema de Tags e Categorização
+
+### Tags de Upgrade
+- **🟢 Imani Tech**: Veículos com tecnologia anti-míssil e outras melhorias defensivas
+- **🟠 HSW**: Veículos com upgrades de alta velocidade (Hao's Special Works)
+- **🔴 Armado**: Veículos equipados com armamentos
+- **🟣 Arena**: Veículos com upgrades da Arena War
+
+### Sistema de Ordenação
+- **📊 Ordenação por Nome**: Ordem alfabética dos veículos
+- **📍 Ordenação por Local**: Agrupamento por local de armazenamento
+- **🔄 Alternância de Ordem**: Ascendente (↑) ou Descendente (↓)
+
+### CSS das Tags
+```css
+.tag-imani { background: linear-gradient(135deg, #2c7a4b, #4acfa9); }
+.tag-hsw { background: linear-gradient(135deg, #d2691e, #ff9f43); }
+.tag-armed { background: linear-gradient(135deg, #8b1a1a, #b22222); }
+.tag-arena { background: linear-gradient(135deg, #483d8b, #7b68ee); }
 ```
 
 ## 📱 Responsividade Detalhada
@@ -287,20 +348,6 @@ A aplicação foi desenvolvida priorizando a experiência móvel, com expansões
   }
 }
 ```
-
-## 🎨 Sistema de Tags e Categorização
-
-### Tags de Upgrade
-- **🟢 Imani Tech**: Veículos com tecnologia anti-míssil e outras melhorias defensivas
-- **🟠 HSW**: Veículos com upgrades de alta velocidade (Hao's Special Works)
-- **🔴 Armado**: Veículos equipados com armamentos
-- **🟣 Arena**: Veículos com upgrades da Arena War
-
-### Categorias de Veículos
-- **Carros Esportivos**: Veículos de alta performance
-- **Motocicletas**: Motos de diversos tipos e categorias
-- **Veículos Militares**: Tanques, blindados e veículos de combate
-- **Aeronaves**: Aviões, helicópteros e outros veículos aéreos
 
 ## 🔧 Instalação e Execução
 
@@ -358,8 +405,8 @@ A aplicação foi desenvolvida priorizando a experiência móvel, com expansões
 {
   _id: "ObjectId",
   veiculo: "Nome do Veículo",
-  categoria: "Tipo/Categoria",
-  local: "Local de Armazenamento",
+  categoria: "Tipo/Categoria", // Uma das 15 categorias predefinidas
+  local: "Local de Armazenamento", // Um dos 12 locais predefinidos
   caracteristicas_especiais: "Descrição das características",
   imani_tech: Boolean,
   hsw: Boolean,
@@ -372,6 +419,7 @@ A aplicação foi desenvolvida priorizando a experiência móvel, com expansões
 ### Coleções MongoDB
 
 - **VeiculosCollection**: Armazena todos os dados dos veículos com índices otimizados
+- **LinksCollection**: Coleção exemplo padrão do Meteor (não utilizada)
 
 ## ⚡ Funcionalidades do Meteor
 
@@ -383,9 +431,12 @@ Meteor.publish("veiculos", function () {
   return VeiculosCollection.find();
 });
 
-// Client - Subscrição
+// Client - Subscrição com ordenação
 const isLoading = useSubscribe('veiculos');
-const veiculos = useFind(() => VeiculosCollection.find());
+const veiculos = useFind(
+  () => VeiculosCollection.find({}, { sort: { [sortKey]: sortOrder } }),
+  [sortKey, sortOrder]
+);
 ```
 
 ### Métodos Seguros
@@ -411,14 +462,13 @@ Meteor.methods({
 - **☁️ Deploy Simplificado Galaxy**: Experiência prática com deploy em nuvem profissional
 - **🛠️ CRUD Integrado**: Operações de banco de dados simplificadas com Meteor Methods
 
-### Vantagens do Meteor para Aprendizado:
+### Vantagens da Estrutura com Helpers:
 
-1. **🔄 Isomorfismo**: Mesmo código JavaScript no cliente e servidor
-2. **📡 DDP**: Compreensão de protocolos de sincronização em tempo real
-3. **🎯 Convenção sobre Configuração**: Foco no desenvolvimento, não na configuração
-4. **🛡️ Segurança Integrada**: Conceitos de segurança aplicados automaticamente
-5. **📦 Ecossistema Completo**: Tudo necessário em um único framework
-6. **🔄 Reatividade Nativa**: Estado sincronizado automaticamente entre cliente e servidor
+1. **🔄 Reutilização**: Categories e possibleLocations são utilizados em múltiplos componentes
+2. **🛡️ Consistência**: Dados padronizados evitam inconsistências na interface
+3. **🔧 Manutenibilidade**: Alterações centralizadas em arquivos específicos
+4. **📦 Modularidade**: Separação clara entre dados de configuração e lógica de negócio
+5. **🎯 Facilidade de Expansão**: Novos locais e categorias podem ser adicionados facilmente
 
 ### Galaxy Cloud Service
 
