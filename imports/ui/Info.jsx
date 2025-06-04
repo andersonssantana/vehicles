@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFind, useSubscribe } from 'meteor/react-meteor-data';
 import { VeiculosCollection } from '../api/veiculos';
-import { VehicleRow } from './VehicleRow'; // Importar o novo componente de linha
+import { VehicleRow } from './VehicleRow';
 import { AddVehicleForm } from './AddVehicleForm';
 import { EditVehicleForm } from './EditVehicleForm';
 
@@ -50,7 +50,6 @@ export const Info = () => {
   // Renderiza a tabela principal
   return (
     <div className="table-container">
-      {/* Controles superiores: Adicionar, Filtros (placeholder), Ações (placeholder) */}
       <div className="table-controls">
         <input type="search" placeholder="Pesquisar veículos..." className="search-input" />
         <div className="control-buttons">
@@ -84,7 +83,7 @@ export const Info = () => {
             <VehicleRow
               key={veiculo._id}
               veiculo={veiculo}
-              onEdit={setEditingVehicle} // Passa a função setEditingVehicle diretamente
+              onEdit={setEditingVehicle}
             />
           ))}
         </tbody>
