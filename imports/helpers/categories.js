@@ -13,6 +13,7 @@ const categories = [
   "Sports",
   "Sports Classics",
   "Super",
+  "SUVs",
   "Vans",
 ];
 
