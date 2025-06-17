@@ -138,23 +138,18 @@ projeto-vehicles/
 ### Arquivos de Helpers
 
 #### 📂 `imports/helpers/categories.js`
-Define as 15 categorias de veículos disponíveis no sistema:
+Define as 16 categorias de veículos disponíveis no sistema:
 ```javascript
 const categories = [
-  "Commercial", "Compacts", "Coupes", "Cycles", "Military",
-  "Motorcycles", "Muscle", "Off-Road", "Open Wheel", "Sedans",
-  "Service", "Sports", "Sports Classics", "Super", "Vans"
+  "Commercial", "Compacts", "Coupes", "Cycles", "Military", "Motorcycles", "Muscle", "Off-Road", "Open Wheel", "Sedans", "Service", "Sports", "Sports Classics", "Super", "SUVs", "Vans"
 ];
 ```
 
 #### 📂 `imports/helpers/possibleLocations.js`
-Define os 12 locais de armazenamento predefinidos:
+Define os 13 locais de armazenamento predefinidos:
 ```javascript
 const possibleLocations = [
-  "Agency: Hawick", "Arcade: Eight-Bit - Vinewood", "Arena Workshop",
-  "Casino Master Penthouse", "Facility: Lago Zancudo", "Garment Factory",
-  "Integrity Way, 28", "MC Clubhouse: Downtown Vinewood",
-  "Office Garage 1", "Office Garage 2", "Office Garage 3", "Terrorbyte"
+  "Agency: Hawick", "Arcade: Eight-Bit - Vinewood", "Arena Workshop", "Auto Shop: Strawberry", "Casino Master Penthouse", "Facility: Lago Zancudo", "Garment Factory", "Integrity Way, 28", "MC Clubhouse: Downtown Vinewood","Office Garage 1", "Office Garage 2", "Office Garage 3", "Terrorbyte"
 ];
 ```
 
