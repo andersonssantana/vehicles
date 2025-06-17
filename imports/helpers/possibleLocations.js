@@ -2,6 +2,7 @@ const possibleLocations = [
   "Agency: Hawick",
   "Arcade: Eight-Bit - Vinewood",
   "Arena Workshop",
+  "Auto Shop: Strawberry",
   "Casino Master Penthouse",
   "Facility: Lago Zancudo",
   "Garment Factory",
