@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "/*": [
+        "./*"
+      ],
+      "meteor/reactive-var": [
+        "/Users/ander/.meteor/packages/reactive-var/1.0.13/web.browser/reactive-var.js"
+      ],
+      "meteor/es5-shim": [
+        "/Users/ander/.meteor/packages/es5-shim/4.8.1/web.browser/client.js",
+        "/Users/ander/.meteor/packages/es5-shim/4.8.1/web.browser/console.js",
+        "/Users/ander/.meteor/packages/es5-shim/4.8.1/web.browser/cordova.js",
+        "/Users/ander/.meteor/packages/es5-shim/4.8.1/web.browser/export_globals.js",
+        "/Users/ander/.meteor/packages/es5-shim/4.8.1/web.browser/import_globals.js"
+      ],
+      "meteor/shell-server": [
+        "/Users/ander/.meteor/packages/shell-server/0.6.1/web.browser/main.js",
+        "/Users/ander/.meteor/packages/shell-server/0.6.1/web.browser/shell-server.js"
+      ],
+      "meteor/hot-module-replacement": [
+        "/Users/ander/.meteor/packages/hot-module-replacement/0.5.4/web.browser/hot-api.js",
+        "/Users/ander/.meteor/packages/hot-module-replacement/0.5.4/web.browser/client.js",
+        "/Users/ander/.meteor/packages/hot-module-replacement/0.5.4/web.browser/server.js"
+      ]
+    }
+  },
+  "typeAcquisition": {
+    "include": [
+      "meteor"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    ".meteor"
+  ]
+}
