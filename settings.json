@@ -1,8 +1,5 @@
 {
     "galaxy.meteor.com": {
-        "containers": {
-            "size": "double"
-        },
         "env": {
             "MONGO_URL": "mongodb://anderson63:GNcC4GjoGdRekStio@galaxyadmin_galaxyfreedb-01.mongodb.galaxy-cloud.io:30025,galaxyadmin_galaxyfreedb-02.mongodb.galaxy-cloud.io:30025,galaxyadmin_galaxyfreedb-03.mongodb.galaxy-cloud.io:30025/andervehicles-meteorapp-com?replicaSet=galaxyadmin_galaxyfreedb&ssl=true"
         }
