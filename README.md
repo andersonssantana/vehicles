@@ -474,4 +474,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 Desenvolvido com 🚀, ⚡ e 🎮 usando Meteor.js e React | **Sistema CRUD Completo em Produção**
-Commit test
+
+Galaxy Cloud Service | MongoDB | Real-time Features | Mobile-First Design
