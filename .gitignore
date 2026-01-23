@@ -3,3 +3,6 @@ node_modules/
 CLAUDE.md
 .env
 .env.local
+
+# Galaxy CLI
+.galaxy/
