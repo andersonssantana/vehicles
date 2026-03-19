@@ -1,25 +1,24 @@
 import { Meteor } from 'meteor/meteor';
 import { VeiculosCollection } from '../imports/api/veiculos';
 
-async function insertVehicle(vehicleData) {
-  await VeiculosCollection.insertAsync({
+function insertVehicle(vehicleData) {
+  VeiculosCollection.insert({
     ...vehicleData,
     createdAt: new Date()
   });
 }
 
-Meteor.startup(async () => {
-  if (await VeiculosCollection.find().countAsync() === 0) {
-    Assets.getTextAsync('veiculos_gta.json', async (error, data) => {
-      if (error) {
-        console.error("Error loading veiculos_gta.json:", error);
-        return;
-      }
-      const vehiclesData = JSON.parse(data);
-      for (const vehicle of vehiclesData) {
-        await insertVehicle(vehicle);
-      }
-    });    
+Meteor.startup(() => {
+  if (VeiculosCollection.find().count() === 0) {
+    const data = Assets.getText('veiculos_gta.json');
+    if (!data) {
+      console.error("Error loading veiculos_gta.json");
+      return;
+    }
+    const vehiclesData = JSON.parse(data);
+    for (const vehicle of vehiclesData) {
+      insertVehicle(vehicle);
+    }
   }
 
   Meteor.publish("veiculos", function () {
@@ -29,16 +28,16 @@ Meteor.startup(async () => {
 
 Meteor.methods({
   'veiculos.insert': function (vehicleData) {
-    return VeiculosCollection.insertAsync({
+    return VeiculosCollection.insert({
       ...vehicleData,
       createdAt: new Date(),
     });
   },
   'veiculos.remove': function ({ _id }) {
-    return VeiculosCollection.removeAsync({ _id });
+    return VeiculosCollection.remove({ _id });
   },
   'veiculos.update': function (vehicleData) {
     const { _id, ...updateData } = vehicleData;
-    return VeiculosCollection.updateAsync(_id, { $set: updateData });
+    return VeiculosCollection.update(_id, { $set: updateData });
   },
 });
